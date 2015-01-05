@@ -20,6 +20,12 @@ FinalProject
   c. Graphical Display
 
 2: Change Log / New Features
+  
+  12/22/14: wrote class files in java
+  
+  12/31/14: rewrote class files in processing
+  
+  1/2/15: added draft of menu
 
 3: Bug Fixes
 
