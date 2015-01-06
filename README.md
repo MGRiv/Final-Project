@@ -18,6 +18,8 @@ FinalProject
   b. Inradius function
   
   c. Graphical Display
+  
+  d. Sprites should be 16x16 or 39x54
 
 2: Change Log / New Features
   
