@@ -9,7 +9,7 @@ PImage img;
 
 void setup(){
   frameRate(30);
-  size(1600,1067);
+  size(1080,900);
   img = loadImage("Bridge2.jpg");
   background(img);
   box = color(255,0,0);
