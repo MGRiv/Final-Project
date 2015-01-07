@@ -19,7 +19,7 @@ FinalProject
   
   c. Graphical Display
   
-  d. Sprites should be 16x16 or 39x54
+    i. To use image and pixel tutorial to help parse spritesheets
 
 2: Change Log / New Features
   
