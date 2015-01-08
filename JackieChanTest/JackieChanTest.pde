@@ -26,6 +26,7 @@ void setup() {
   animation1 = new Animation("JackieChanwalk", 9,100);
 }
 void draw(){
+  background(0);
  animation1.display(0,0); 
 }
 //from processing.org/examples/animatedsprite.html
