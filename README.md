@@ -23,11 +23,13 @@ FinalProject
 
 2: Change Log / New Features
   
-  12/22/14: wrote class files in java
+    12/22/14: wrote class files in java
   
-  12/31/14: rewrote class files in processing
+    12/31/14: rewrote class files in processing
   
-  1/2/15: added draft of menu
+    1/2/15: added draft of menu
+    
+    1/7/15: added Jackie Chan animation test
 
 3: Bug Fixes
 
