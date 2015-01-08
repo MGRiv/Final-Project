@@ -30,6 +30,8 @@ FinalProject
     1/2/15: added draft of menu
     
     1/7/15: added Jackie Chan animation test
+    
+    1/8/15: applied animation to code to other classes
 
 3: Bug Fixes
 
