@@ -19,15 +19,17 @@ void draw(){
   n=0; 
  }
 }*/
-Animation animation1;
+Animation animation1,animation2;
 void setup() {
   size(640, 360);
   background(0);
-  animation1 = new Animation("JackieChanwalk", 9,100);
+  animation1 = new Animation("JackieChanwalk", 10,90);
+  animation2=new Animation("JackieChanattack",5,100);
 }
 void draw(){
   background(0);
- animation1.display(0,0); 
+ animation1.display(0,0);
+ animation2.display(50,0);
 }
 //from processing.org/examples/animatedsprite.html
 class Animation {
