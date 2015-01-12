@@ -1,14 +1,25 @@
 class Creature extends Unit{
  float speed;
- Creature(int hp,int dmg,float xpos,float ypos,float spd){
+ String filename;
+ int numpics,mvdelay,atdelay,status;
+ Creature(int hp,int dmg,float xpos,float ypos,float spd,String filename2,int numpics2,int mvdelay2,int atdelay2){
   super(hp,dmg,xpos,ypos);
   speed=spd;
-  Creatures.add(this);
+  filename=filename2;
+  numpics=numpics2;
+  mvdelay=mvdelay2;
+  atdelay=atdelay2;
+  aliveCreatures.add(this);
+  status=0;
  }
- 
+ void turn(){
+  if (!inRadius()){
+   status=0;
+  } 
+ }
  boolean inRadius(){
-   for (int i=0;i<Creatures.length;i++){
-       if (abs(this.x-Creatures.get(i).x)<this.speed && this.friendly != Creatures.get(i).friendly){
+   for (int i=0;i<aliveCreatures.size();i++){
+       if (abs(this.x-aliveCreatures.get(i).x)<this.speed && this.friendly != aliveCreatures.get(i).friendly){
          return true;
        }
    }

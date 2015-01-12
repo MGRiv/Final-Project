@@ -6,6 +6,7 @@ boolean c1Over = false;
 boolean c2Over = false;
 boolean c3Over = false;
 PImage img;
+float state = 0;
 //from processing.org/examples/animatedsprite.html
 class Animation {
   PImage[] images;
@@ -56,6 +57,7 @@ void setup(){
 
 void draw(){
   update(mouseX, mouseY);
+  if(state==0){
   img = loadImage("Bridge2.jpg");
   background(img);
   if(c1Over){
@@ -86,6 +88,9 @@ void draw(){
   text("CAMPAIGN",c1X - (cize/2) + 18,c1Y + 10);
   text("UPGRADES",c2X - (cize/2) + 18,c2Y + 10);
   text("OPTIONS",c3X - (cize/2) + 30,c3Y + 10);
+  }else if(state==1){
+    
+  }
 }
 
 void update(int x,int y){

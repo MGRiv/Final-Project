@@ -1,4 +1,4 @@
-Class Unit{
+class Unit{
  int health,damage;
  float x,y;
  boolean friendly;
