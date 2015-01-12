@@ -5,6 +5,7 @@ class Creature extends Unit{
   speed=spd;
   Creatures.add(this);
  }
+ 
  boolean inRadius(){
    for (int i=0;i<Creatures.length;i++){
        if (abs(this.x-Creatures.get(i).x)<this.speed && this.friendly != Creatures.get(i).friendly){

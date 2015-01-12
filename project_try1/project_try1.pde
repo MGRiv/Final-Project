@@ -1,4 +1,4 @@
-ArrayList<Creature> aliveCreatures=new ArrayList<Creature>;
+ArrayList<Creature> aliveCreatures=new ArrayList<Creature>();
 float c1X,c1Y,c2X,c2Y,c3X,c3Y;
 float cize;
 color box,High;
@@ -6,6 +6,37 @@ boolean c1Over = false;
 boolean c2Over = false;
 boolean c3Over = false;
 PImage img;
+//from processing.org/examples/animatedsprite.html
+class Animation {
+  PImage[] images;
+  int imageCount;
+  int frame,lag;
+  int timer=0;
+  
+  Animation(String imagePrefix, int count,int lag2) {
+    imageCount = count;
+    images = new PImage[imageCount];
+    lag=lag2;
+
+    for (int i = 0; i < imageCount; i++) {
+      String filename = imagePrefix + nf(i, 1) + ".png";
+      images[i] = loadImage(filename);
+    }
+  }
+
+  void display(float xpos, float ypos) {
+    if (millis()-timer>lag){
+      frame = (frame+1) % imageCount;
+      timer=millis();
+    }
+    image(images[frame], xpos,ypos);
+  }
+  
+  int getWidth() {
+    return images[0].width;
+  }
+}
+
 
 void setup(){
   frameRate(30);
