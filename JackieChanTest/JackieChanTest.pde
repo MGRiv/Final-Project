@@ -4,7 +4,7 @@ void setup() {
   background(0);
   animation1 = new Animation("JackieChanwalk", 10,90);
   animation2=new Animation("JackieChanattack",5,100);
-  animation3=new Animation("Astrowalk",11,75);
+  animation3=new Animation("Astrowalk",9,75);
   animation4=new Animation("Astroattack",23,75);
 }
 void draw(){
