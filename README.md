@@ -35,3 +35,8 @@ FinalProject
 
 3: Bug Fixes
 
+4: Thanks to the following:
+  
+    processing.org/expamples/animatedsprite.html
+    
+    processing.org/examples/button.html
