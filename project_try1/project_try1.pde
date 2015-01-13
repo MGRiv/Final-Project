@@ -1,10 +1,16 @@
 ArrayList<Creature> aliveCreatures=new ArrayList<Creature>();
 float c1X,c1Y,c2X,c2Y,c3X,c3Y;
 float cize;
+float s1X,s1Y,s2X,s2Y,s3X,s3Y,s4X,s4Y,s5X,s5Y;
 color box,High;
 boolean c1Over = false;
 boolean c2Over = false;
 boolean c3Over = false;
+boolean s1Over = false;
+boolean s2Over = false;
+boolean s3Over = false;
+boolean s4Over = false;
+boolean s5Over = false;
 PImage img;
 float state = 0;
 //from processing.org/examples/animatedsprite.html
@@ -58,37 +64,37 @@ void setup(){
 void draw(){
   update(mouseX, mouseY);
   if(state==0){
-  img = loadImage("Bridge2.jpg");
-  background(img);
-  if(c1Over){
-    fill(High);
-  }else{
-    fill(box);
-  }
-  stroke(0);
-  ellipse(c1X,c1Y,cize,cize);
-  
-  if(c2Over){
-    fill(High);
-  }else{
-    fill(box);
-  }
-  stroke(0);
-  ellipse(c2X,c2Y,cize,cize);
-  
-  if(c3Over){
-    fill(High);
-  }else{
-    fill(box);
-  }
-  stroke(0);
-  ellipse(c3X,c3Y,cize,cize);
-  textSize(32);
-  fill(0);
-  text("CAMPAIGN",c1X - (cize/2) + 18,c1Y + 10);
-  text("UPGRADES",c2X - (cize/2) + 18,c2Y + 10);
-  text("OPTIONS",c3X - (cize/2) + 30,c3Y + 10);
+    img = loadImage("Bridge2.jpg");
+    background(img);
+    if(c1Over){
+      fill(High);
+    }else{
+      fill(box);
+    }
+    stroke(0);
+    ellipse(c1X,c1Y,cize,cize); 
+    if(c2Over){
+      fill(High);
+    }else{
+      fill(box);
+    }
+    stroke(0);
+    ellipse(c2X,c2Y,cize,cize);
+    if(c3Over){
+      fill(High);
+    }else{
+      fill(box);
+    }
+    stroke(0);
+    ellipse(c3X,c3Y,cize,cize);
+    textSize(32);
+    fill(0);
+    text("CAMPAIGN",c1X - (cize/2) + 18,c1Y + 10);
+    text("UPGRADES",c2X - (cize/2) + 18,c2Y + 10);
+    text("OPTIONS",c3X - (cize/2) + 30,c3Y + 10);
   }else if(state==1){
+    img = loadImage("southpark.jpg");
+    background(img);
     
   }
 }
@@ -111,6 +117,23 @@ void update(int x,int y){
     c2Over = false;
     c3Over = false;
   }
+}
+
+void mouseClicked(){
+  if(state==0){
+   if(c1Over==true){
+     state = 1;
+   }
+   if(c2Over==true){
+     state = 2;
+   }
+   if(c3Over==true){
+     state = 3;
+   }   
+  }
+  if(state==1){
+     
+  }  
 }
 
 boolean overCircle(float x,float y){
