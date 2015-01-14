@@ -1,12 +1,13 @@
 class Creature extends Unit{
  float speed;
  String filename;
- int numpics,mvdelay,atdelay,status;
- Creature(int hp,int dmg,float xpos,float ypos,float spd,String filename2,int numpics2,int mvdelay2,int atdelay2){
+ int atnumpics,mvnumpics,mvdelay,atdelay,status;
+ Creature(int hp,int dmg,float xpos,float ypos,float spd,String filename2,int numpics2,int numpics3,int mvdelay2,int atdelay2){
   super(hp,dmg,xpos,ypos);
   speed=spd;
   filename=filename2;
-  numpics=numpics2;
+  atnumpics=numpics2;
+  mvnumpics=numpics3;
   mvdelay=mvdelay2;
   atdelay=atdelay2;
   aliveCreatures.add(this);
