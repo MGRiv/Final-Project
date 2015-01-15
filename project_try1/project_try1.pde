@@ -3,6 +3,7 @@ float c1X,c1Y,c2X,c2Y,c3X,c3Y;
 float cize;
 float s1X,sY,s2X,s3X,s4X,s5X;
 float csize;
+float callnum;
 color box,High;
 boolean c1Over = false;
 boolean c2Over = false;
@@ -67,6 +68,7 @@ void setup(){
   s5X = width*5/6;
   cize = 200;
   csize = 180;
+  callnum = 0;
 }
 
 void draw(){
@@ -103,6 +105,14 @@ void draw(){
   }else if(state==1){
     img = loadImage("southpark.jpg");
     background(img);
+    Base pbase=new Base(-50,650,"MagicSchoolBus.png");
+    Base ebase=new Base(875,600,"Portal.png");
+    image(pbase.pic,pbase.x,pbase.y);
+    image(ebase.pic,ebase.x,ebase.y);
+    for (int i=0;i<aliveCreatures.size();i++){
+       Animation a=new Animation(aliveCreatures.get(i).filename+"walk.png",aliveCreatures.get(i).mvnumpics,aliveCreatures.get(i).mvdelay);
+      a.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y); 
+    }
     if(s1Over){
       fill(High);
     }else{
@@ -217,7 +227,9 @@ void mouseClicked(){
    }   
   }
   if(state==1){
-     
+     if(s1Over==true){
+       Freshie fresh=new Freshie();
+     }
   }  
 }
 
