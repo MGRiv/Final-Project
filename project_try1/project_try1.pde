@@ -14,7 +14,6 @@ boolean s3Over = false;
 boolean s4Over = false;
 boolean s5Over = false;
 PImage img;
-Animation a;
 float state = 0;
 //from processing.org/examples/animatedsprite.html
 class Animation {
