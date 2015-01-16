@@ -110,8 +110,15 @@ void draw(){
     image(pbase.pic,pbase.x,pbase.y);
     image(ebase.pic,ebase.x,ebase.y);
     for (int i=0;i<aliveCreatures.size();i++){
+      if(aliveCreatures.get(i).health > 0){
       aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
       aliveCreatures.get(i).turn();
+      if(aliveCreatures.get(i).status==1 && (aliveCreatures.get(i).nowAni.frame + 1) % aliveCreatures.get(i).nowAni.imageCount == 0){
+        aliveCreatures.get(aliveCreatures.get(i).target).health -= 20;
+      }
+      }else{
+       aliveCreatures.remove(i); 
+      }
     }
     if(s1Over){
       fill(High);
@@ -229,6 +236,7 @@ void mouseClicked(){
   if(state==1){
      if(s1Over==true){
        Freshie fresh=new Freshie();
+       Tadmin admin=new Tadmin();
        int i=aliveCreatures.size()-1;
        //a=new Animation(aliveCreatures.get(i).filename,aliveCreatures.get(i).mvnumpics,aliveCreatures.get(i).mvdelay);
      }
