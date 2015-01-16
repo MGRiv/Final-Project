@@ -110,7 +110,8 @@ void draw(){
     image(pbase.pic,pbase.x,pbase.y);
     image(ebase.pic,ebase.x,ebase.y);
     for (int i=0;i<aliveCreatures.size();i++){
-      aliveCreatures.get(i).walka.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
+      aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
+      aliveCreatures.get(i).turn();
     }
     if(s1Over){
       fill(High);
