@@ -15,6 +15,7 @@ boolean s4Over = false;
 boolean s5Over = false;
 PImage img;
 float state = 0;
+float resource = 0;
 //from processing.org/examples/animatedsprite.html
 class Animation {
   PImage[] images;
@@ -22,7 +23,7 @@ class Animation {
   int frame,lag;
   int timer=0;
   
-  Animation(String imagePrefix, int count,int lag2) {
+Animation(String imagePrefix, int count,int lag2) {
     imageCount = count;
     images = new PImage[imageCount];
     lag=lag2;
@@ -35,7 +36,12 @@ class Animation {
 
   void display(float xpos, float ypos) {
     if (millis()-timer>lag){
-      frame = (frame+1) % imageCount;
+      if (frame==imageCount-1){
+       frame=0; 
+      }
+      else{
+        frame+=1;
+      }
       timer=millis();
     }
     image(images[frame], xpos,ypos);
@@ -103,6 +109,7 @@ void draw(){
     text("UPGRADES",c2X - (cize/2) + 18,c2Y + 10);
     text("OPTIONS",c3X - (cize/2) + 30,c3Y + 10);
   }else if(state==1){
+    resource++;
     img = loadImage("southpark.jpg");
     background(img);
     Base pbase=new Base(-50,650,"MagicSchoolBus.png");
@@ -111,11 +118,12 @@ void draw(){
     image(ebase.pic,ebase.x,ebase.y);
     for (int i=0;i<aliveCreatures.size();i++){
       if(aliveCreatures.get(i).health > 0){
-      aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
-      aliveCreatures.get(i).turn();
-      if(aliveCreatures.get(i).status==1 && (aliveCreatures.get(i).nowAni.frame + 1) % aliveCreatures.get(i).nowAni.imageCount == 0){
-        aliveCreatures.get(aliveCreatures.get(i).target).health -= 20;
-      }
+        aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
+        aliveCreatures.get(i).turn();
+        if(aliveCreatures.get(i).status==1 && aliveCreatures.get(i).nowAni.frame==aliveCreatures.get(i).nowAni.imageCount-1 && !aliveCreatures.get(i).done){
+          aliveCreatures.get(aliveCreatures.get(i).target).health -= aliveCreatures.get(i).damage;
+          aliveCreatures.get(i).done=true;
+        }
       }else{
        aliveCreatures.remove(i); 
       }
@@ -237,8 +245,6 @@ void mouseClicked(){
      if(s1Over==true){
        Freshie fresh=new Freshie();
        Tadmin admin=new Tadmin();
-       int i=aliveCreatures.size()-1;
-       //a=new Animation(aliveCreatures.get(i).filename,aliveCreatures.get(i).mvnumpics,aliveCreatures.get(i).mvdelay);
      }
   }  
 }

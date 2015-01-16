@@ -1,5 +1,6 @@
 class Creature extends Unit{
- float speedtimer,speed,range;
+ float speedtimer,speed,range,attacktimer;
+ boolean done=false;
  int target;
  String filename;
  Animation walka,attacka,nowAni;
@@ -25,7 +26,7 @@ class Creature extends Unit{
    status=0;
   }
   else if (inRadius()){
-   status=1; 
+   status=1;
   }
   if (status==0){
    nowAni=walka;
@@ -40,7 +41,10 @@ class Creature extends Unit{
    }
   }
   else if(status==1){
-   nowAni=attacka; 
+   nowAni=attacka;
+   if(nowAni.frame == 0){
+    done = false; 
+   }
   }
  }
  boolean inRadius(){

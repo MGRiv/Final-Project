@@ -1,6 +1,6 @@
 class Tadmin extends Creature{
  Tadmin(){
-  super(5,1,700,800,5,"Astro",23,9,75,75,35);
+  super(5,1,700,800,5,"Sanji",6,6,200,300,35);
   friendly=false;
  } 
 }
