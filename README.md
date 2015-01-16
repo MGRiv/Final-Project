@@ -32,6 +32,10 @@ FinalProject
     1/7/15: added Jackie Chan animation test
     
     1/8/15: applied animation to code to other classes
+    
+    1/9-14/14: sprite selection and general design choices, loading creatures to battlefield, buttons etc.
+    
+    1/15/14: walking and loading down, messing with attacks now
 
 3: Bug Fixes
 
