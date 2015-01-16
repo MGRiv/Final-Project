@@ -110,10 +110,9 @@ void draw(){
     Base ebase=new Base(875,600,"Portal.png");
     image(pbase.pic,pbase.x,pbase.y);
     image(ebase.pic,ebase.x,ebase.y);
-    /*for (int i=0;i<aliveCreatures.size();i++){
-       Animation a=new Animation(aliveCreatures.get(i).givename,aliveCreatures.get(i).mvnumpics,aliveCreatures.get(i).mvdelay);
-      a.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y); 
-    }*/
+    for (int i=0;i<aliveCreatures.size();i++){
+      aliveCreatures.get(i).walka.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
+    }
     if(s1Over){
       fill(High);
     }else{
@@ -231,8 +230,7 @@ void mouseClicked(){
      if(s1Over==true){
        Freshie fresh=new Freshie();
        int i=aliveCreatures.size()-1;
-       a=new Animation(aliveCreatures.get(i).givename,aliveCreatures.get(i).mvnumpics,aliveCreatures.get(i).mvdelay);
-       a.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
+       //a=new Animation(aliveCreatures.get(i).filename,aliveCreatures.get(i).mvnumpics,aliveCreatures.get(i).mvdelay);
      }
   }  
 }
