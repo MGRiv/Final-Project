@@ -7,5 +7,11 @@ class Base extends Unit{
  Base(float xpos,float ypos,String picture){
   this(200,20,xpos,ypos,picture);
  }
+ boolean checkdeath(){
+  if(health <=0){
+   return true;
+  } 
+  return false;
+ }
 
 }

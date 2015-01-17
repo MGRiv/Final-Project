@@ -16,6 +16,7 @@ boolean s5Over = false;
 PImage img;
 float state = 0;
 float resource = 0;
+int win = 0;
 //from processing.org/examples/animatedsprite.html
 class Animation {
   PImage[] images;
@@ -114,8 +115,6 @@ void draw(){
     background(img);
     Base pbase=new Base(-50,650,"MagicSchoolBus.png");
     Base ebase=new Base(875,600,"Portal.png");
-    image(pbase.pic,pbase.x,pbase.y);
-    image(ebase.pic,ebase.x,ebase.y);
     for (int i=0;i<aliveCreatures.size();i++){
       if(aliveCreatures.get(i).health > 0){
         aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
@@ -124,10 +123,26 @@ void draw(){
           aliveCreatures.get(aliveCreatures.get(i).target).health -= aliveCreatures.get(i).damage;
           aliveCreatures.get(i).done=true;
         }
+        if(abs(aliveCreatures.get(i).x - 540) > 440){
+         if(aliveCreatures.get(i).friendly == true){
+          ebase.health -= aliveCreatures.get(i).health; 
+         }else{
+          pbase.health -=aliveCreatures.get(i).health; 
+         }
+         aliveCreatures.remove(i);
+        }
       }else{
        aliveCreatures.remove(i); 
       }
+      if(pbase.checkdeath()){
+        win = 1;
+      }
+      if(ebase.checkdeath()){
+       win = 2; 
+      }
     }
+    image(pbase.pic,pbase.x,pbase.y);
+    image(ebase.pic,ebase.x,ebase.y);
     if(s1Over){
       fill(High);
     }else{
@@ -163,6 +178,15 @@ void draw(){
     }
     stroke(0);
     ellipse(s5X,sY,csize,csize);
+    fill(0);
+    textSize(32);
+    text("CHILD LABOR SUPPLY:" + str(resource),0,30);
+    textSize(16);
+    text("FRESHMAN:75", s1X - (csize / 3) + 5,sY);
+    text("SOPHOMORE:125", s2X -(csize / 3) - 5,sY);
+    text("JUNIOR:180", s3X -(csize / 3) + 17,sY);
+    text("SENIOR:225", s4X -(csize / 3) + 14,sY);
+    text("SUPER SENIOR:320", s5X -(csize / 3) - 10,sY);
     
     
   }
