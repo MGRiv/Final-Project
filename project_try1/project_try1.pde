@@ -275,7 +275,14 @@ void mouseClicked(){
      }
   }  
 }
-
+void keyPressed(){
+ if (key=='1'){
+  if(resource>=75){
+   resource -=75;
+   Freshie fresh=new Freshie();
+  }
+ } 
+}
 
 boolean overCircle(float x,float y){
   if(dist(mouseX,mouseY,x,y) <= cize*.5){
