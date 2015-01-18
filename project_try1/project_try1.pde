@@ -15,7 +15,8 @@ boolean s4Over = false;
 boolean s5Over = false;
 PImage img;
 float state = 0;
-float resource = 0;
+float resource = 75;
+float spawnTimer=0;
 int win = 0;
 //from processing.org/examples/animatedsprite.html
 class Animation {
@@ -111,6 +112,10 @@ void draw(){
     text("OPTIONS",c3X - (cize/2) + 30,c3Y + 10);
   }else if(state==1){
     resource++;
+    if (millis()-spawnTimer>10000){
+     Tadmin admin=new Tadmin();
+    spawnTimer=millis(); 
+    }
     img = loadImage("southpark.jpg");
     background(img);
     Base pbase=new Base(-50,650,"MagicSchoolBus.png");
@@ -280,7 +285,7 @@ void mouseClicked(){
        if(resource>=75){
          resource-=75;
          Freshie fresh=new Freshie();
-         Tadmin admin=new Tadmin();
+         //Tadmin admin=new Tadmin();
        }
      }
   }  
