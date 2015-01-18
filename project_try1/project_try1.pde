@@ -115,11 +115,6 @@ void draw(){
     background(img);
     Base pbase=new Base(-50,650,"MagicSchoolBus.png");
     Base ebase=new Base(875,600,"Portal.png");
-    if (keyPressed=true){
-     if (key=='1'){
-      createFreshie();
-     } 
-    }
     for (int i=0;i<aliveCreatures.size();i++){
       if(aliveCreatures.get(i).health > 0){
         aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
@@ -271,19 +266,14 @@ void mouseClicked(){
    }   
   }
   if(state==1){
-    if (s1Over==true){
-     createFreshie();
-    }
+     if(s1Over==true){
+       if(resource>=75){
+         resource-=75;
+         Freshie fresh=new Freshie();
+         Tadmin admin=new Tadmin();
+       }
+     }
   }  
-}
-boolean createFreshie(){
-  if(resource>=75){
-    resource-=75;
-    Freshie fresh=new Freshie();
-    Tadmin admin=new Tadmin();
-    return true;
-  }
-  return false;
 }
 
 
