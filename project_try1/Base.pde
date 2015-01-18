@@ -5,7 +5,7 @@ class Base extends Unit{
    pic=loadImage(picture);
  }
  Base(float xpos,float ypos,String picture){
-  this(200,20,xpos,ypos,picture);
+  this(5,20,xpos,ypos,picture);
  }
  boolean checkdeath(){
   if(health <=0){

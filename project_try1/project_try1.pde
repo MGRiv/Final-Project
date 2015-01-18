@@ -187,7 +187,17 @@ void draw(){
     text("JUNIOR:180", s3X -(csize / 3) + 17,sY);
     text("SENIOR:225", s4X -(csize / 3) + 14,sY);
     text("SUPER SENIOR:320", s5X -(csize / 3) - 10,sY);
+    if (win==2){
+     textSize(60);
+     text("YOU WIN!",width/3,height/3+100);
+     state=0;
     
+    }
+    else if(win==1){
+     textSize(60);
+    text("YOU LOSE!",width*3/5,height*3/5);
+   state=0; 
+    }
     
   }
 }
