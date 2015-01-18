@@ -267,8 +267,11 @@ void mouseClicked(){
   }
   if(state==1){
      if(s1Over==true){
-       Freshie fresh=new Freshie();
-       Tadmin admin=new Tadmin();
+       if(resource>=75){
+         resource-=75;
+         Freshie fresh=new Freshie();
+         Tadmin admin=new Tadmin();
+       }
      }
   }  
 }
