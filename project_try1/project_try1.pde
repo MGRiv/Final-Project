@@ -19,7 +19,8 @@ float resource = 15;
 float spawnTimer=0;
 int win = 0;
 boolean looping = true;
-int cumulative = 1;
+float reps = 0;
+boolean start = true;
 //from processing.org/examples/animatedsprite.html
 class Animation {
   PImage[] images;
@@ -108,10 +109,20 @@ void draw(){
     fill(255,0,0);
     text("SCHOOLWARS",width/4 - 130,height/4);
   }else if(state==1){
-    resource+= 1.5;
-    if (millis()-spawnTimer>10000){
+    resource+= pow(2,reps);
+    if(start){
+     spawnTimer=millis();
+    start =false; 
+    }
+    if (resource % pow(512,reps + 1) == 0){
+     reps++; 
+    }
+    if (millis()-spawnTimer>10000 - (reps*1000)){
      Tadmin admin=new Tadmin();
     spawnTimer=millis(); 
+    }
+    if(reps > 5){
+     reps = 5;
     }
     img = loadImage("southpark.jpg");
     background(img);
@@ -206,16 +217,17 @@ void draw(){
     fill(255);
    text("Welcome to Schoolwars",0,0);
    text("The objective of the game is to defeat the teachers by amass enough",0,32);
-   text("units to overwhelm their forces. Your fellow students, which you",0,64);
-   text("command, will spawn from the magic schoolbus, marching towards the",0,96);
-   text("dark portal. The administration's forces will come outof the dark",0,128);
-   text("portal, and once in range, do battle with the students. As their",0,160);
-   text("leader, you be able to spawn units using the buttons at the top of",0,192);
-   text("the battle screen, or by pressing one of the keys, 1-5. However, you",0,224);
-   text("can only spawn units if you have enough resources, displayed in the",0,256);
-   text("top left. You can always pause the game by pressing p. You can",0,288);
-   text("return to the main menu by pressing m. This will save your progress",0,320);
-   text("as long as you keep the window open",0,352);
+   text("units to overwhelm their forces. Your fellow students, which you",0,96);
+   text("command, will spawn from the magic schoolbus, marching towards",0,160);
+   text("the dark portal. The administration's forces will come out of the dark",0,224);
+   text("portal, and once in range, do battle with the students. As their",0,288);
+   text("leader, you be able to spawn units using the buttons at the top of",0,352);
+   text("the battle screen, or by pressing one of the keys, 1-5. However, you",0,416);
+   text("can only spawn units if you have enough resources, displayed in the",0,480);
+   text("top left. You can always pause the game by pressing p. You can",0,544);
+   text("return to the main menu by pressing m. This will save your progress",0,608);
+   text("as long as you keep the window open. Additionally, one can restart",0,672);
+   text("by pressing r.",0,736);
   }
 }
 
@@ -357,6 +369,15 @@ void keyPressed(){
  }
  if(key=='m'){
   state=0; 
+ }
+ if(key=='r'){
+  state=0;
+ resource = 15;
+  for(int i = 0; i < aliveCreatures.size(); i++){
+   aliveCreatures.remove(0);
+  }
+  reps = 0;
+  win = 0;  
  }
 }
 
