@@ -15,9 +15,11 @@ boolean s4Over = false;
 boolean s5Over = false;
 PImage img;
 float state = 0;
-float resource = 75;
+float resource = 15;
 float spawnTimer=0;
 int win = 0;
+boolean looping = true;
+int cumulative = 1;
 //from processing.org/examples/animatedsprite.html
 class Animation {
   PImage[] images;
@@ -98,20 +100,15 @@ void draw(){
     }
     stroke(0);
     ellipse(c2X,c2Y,cize,cize);
-    if(c3Over){
-      fill(High);
-    }else{
-      fill(box);
-    }
-    stroke(0);
-    ellipse(c3X,c3Y,cize,cize);
     textSize(32);
     fill(0);
     text("CAMPAIGN",c1X - (cize/2) + 18,c1Y + 10);
-    text("UPGRADES",c2X - (cize/2) + 18,c2Y + 10);
-    text("OPTIONS",c3X - (cize/2) + 30,c3Y + 10);
+    text("HOW TO PLAY",c2X - (cize/2) - 8,c2Y + 10);
+    textSize(120);
+    fill(255,0,0);
+    text("SCHOOLWARS",width/4 - 130,height/4);
   }else if(state==1){
-    resource++;
+    resource+= cumulative;
     if (millis()-spawnTimer>10000){
      Tadmin admin=new Tadmin();
     spawnTimer=millis(); 
@@ -193,17 +190,35 @@ void draw(){
     text("SENIOR:225", s4X -(csize / 3) + 14,sY);
     text("SUPER SENIOR:320", s5X -(csize / 3) - 10,sY);
     if (win==2){
-     textSize(60);
+     textSize(120);
      text("YOU WIN!",width/3,height/3+100);
-     state=0;
+     noLoop();
     
     }
     else if(win==1){
-     textSize(60);
+     textSize(120);
     text("YOU LOSE!",width*3/5,height*3/5);
-   state=0; 
+     noLoop(); 
     }
-    
+   if(minute() % 2 == 0){
+    cumulative++;
+   } 
+  }else if(state == 2){
+    background(0);
+    textSize(32);
+    fill(255);
+   text("Welcome to Schoolwars",0,0);
+   text("The objective of the game is to defeat the teachers by amass enough",0,32);
+   text("units to overwhelm their forces. Your fellow students, which you",0,64);
+   text("command, will spawn from the magic schoolbus, marching towards the",0,96);
+   text("dark portal. The administration's forces will come outof the dark",0,128);
+   text("portal, and once in range, do battle with the students. As their",0,160);
+   text("leader, you be able to spawn units using the buttons at the top of",0,192);
+   text("the battle screen, or by pressing one of the keys, 1-5. However, you",0,224);
+   text("can only spawn units if you have enough resources, displayed in the",0,256);
+   text("top left. You can always pause the game by pressing p. You can",0,288);
+   text("return to the main menu by pressing m. This will save your progress",0,320);
+   text("as long as you keep the window open",0,352);
   }
 }
 
@@ -212,19 +227,12 @@ void update(int x,int y){
     if(overCircle(c1X,c1Y)){
       c1Over = true;
       c2Over = false;
-      c3Over = false;
     }else if(overCircle(c2X,c2Y)){
       c1Over = false;
       c2Over = true;
-      c3Over = false;
-    }else if(overCircle(c3X,c3Y)){
-      c1Over = false;
-      c2Over = false;
-      c3Over = true;
     }else{
       c1Over = false;
       c2Over = false;
-      c3Over = false;
     }
   }else if(state==1){
     if(overCircle(s1X,sY)){
@@ -275,17 +283,13 @@ void mouseClicked(){
    }
    if(c2Over==true){
      state = 2;
-   }
-   if(c3Over==true){
-     state = 3;
-   }   
+   } 
   }
   if(state==1){
      if(s1Over==true){
        if(resource>=75){
          resource-=75;
          Freshie fresh=new Freshie();
-         //Tadmin admin=new Tadmin();
        }
      }
   }  
@@ -296,7 +300,43 @@ void keyPressed(){
    resource -=75;
    Freshie fresh=new Freshie();
   }
- } 
+ }
+ if (key=='2'){
+  if(resource>=125){
+   resource -=125;
+   Soph sop=new Soph();
+  }
+ }
+ if (key=='3'){
+  if(resource>=180){
+   resource -=180;
+   Junior jun=new Junior();
+  }
+ }
+ if (key=='4'){
+  if(resource>=225){
+   resource -=225;
+   Senior sen=new Senior();
+  }
+ }
+ if (key=='5'){
+  if(resource>=320){
+   resource -=320;
+   SuperSenior sup=new SuperSenior();
+  }
+ }
+ if(key=='p'){
+   if(looping){
+     noLoop();
+     looping = false;
+   }else{
+     loop();
+     looping = true;
+   }
+ }
+ if(key=='m'){
+  state=0; 
+ }
 }
 
 boolean overCircle(float x,float y){
