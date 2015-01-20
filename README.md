@@ -36,6 +36,12 @@ FinalProject
     1/9-14/14: sprite selection and general design choices, loading creatures to battlefield, buttons etc.
     
     1/15/14: walking and loading down, messing with attacks now
+    
+    1/18/15: Worked on bases, attacking, reousrces, and win conditions
+    
+    1/19/15: Finalized resources, base attacks, and win con. Added some key bindings
+    
+    1/20/15: Applied spawn and key bindings to all units, fixed sprites, deleted buttons, added how to play screen
 
 3: Bug Fixes
 
