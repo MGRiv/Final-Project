@@ -102,13 +102,13 @@ void draw(){
     ellipse(c2X,c2Y,cize,cize);
     textSize(32);
     fill(0);
-    text("CAMPAIGN",c1X - (cize/2) + 18,c1Y + 10);
+    text("PLAY",c1X - (cize/2) + 59,c1Y + 10);
     text("HOW TO PLAY",c2X - (cize/2) - 8,c2Y + 10);
     textSize(120);
     fill(255,0,0);
     text("SCHOOLWARS",width/4 - 130,height/4);
   }else if(state==1){
-    resource+= cumulative;
+    resource+= 1.5;
     if (millis()-spawnTimer>10000){
      Tadmin admin=new Tadmin();
     spawnTimer=millis(); 
@@ -200,9 +200,6 @@ void draw(){
     text("YOU LOSE!",width*3/5,height*3/5);
      noLoop(); 
     }
-   if(minute() % 2 == 0){
-    cumulative++;
-   } 
   }else if(state == 2){
     background(0);
     textSize(32);
@@ -292,6 +289,30 @@ void mouseClicked(){
          Freshie fresh=new Freshie();
        }
      }
+     if(s2Over==true){
+       if(resource>=125){
+         resource-=125;
+         Soph soph=new Soph();
+       }
+     }
+     if(s3Over==true){
+       if(resource>=180){
+         resource-=180;
+         Junior jun=new Junior();
+       }
+     }
+     if(s4Over==true){
+       if(resource>=225){
+         resource-=225;
+         Senior sen=new Senior();
+       }
+     }
+     if(s5Over==true){
+       if(resource>=320){
+         resource-=320;
+         SuperSenior sup=new SuperSenior();
+       }
+     }     
   }  
 }
 void keyPressed(){
