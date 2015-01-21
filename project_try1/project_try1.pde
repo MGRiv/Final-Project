@@ -15,7 +15,7 @@ boolean s4Over = false;
 boolean s5Over = false;
 PImage img;
 float state = 0;
-float resource = 15;
+float resource = 75;
 float spawnTimer=0;
 int win = 0;
 boolean looping = true;
