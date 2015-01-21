@@ -130,6 +130,8 @@ void draw(){
     background(img);
     Base pbase=new Base(pHealth,0,-50,700,"MagicSchoolBus.png");
     Base ebase=new Base(eHealth,0,875,650,"Portal.png");
+    image(pbase.pic,pbase.x,pbase.y);
+    image(ebase.pic,ebase.x,ebase.y);
     for (int i=0;i<aliveCreatures.size();i++){
       if(aliveCreatures.get(i).health > 0){
         aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
@@ -140,7 +142,7 @@ void draw(){
         }
         if(abs(aliveCreatures.get(i).x - 540) > 440){
          if(aliveCreatures.get(i).friendly == true){
-          eHealth -= aliveCreatures.get(i).health; 
+          eHealth -= aliveCreatures.get(i).health;
          }else{
           pHealth -=aliveCreatures.get(i).health; 
          }
@@ -156,8 +158,6 @@ void draw(){
        win = 2; 
       }
     }
-    image(pbase.pic,pbase.x,pbase.y);
-    image(ebase.pic,ebase.x,ebase.y);
     if(s1Over){
       fill(High);
     }else{
@@ -206,13 +206,13 @@ void draw(){
     text(str(ebase.health),960,625);
     if (win==2){
      textSize(120);
-     text("YOU WIN!",width/3,height/3+100);
+     text("YOU WIN!",width/3 - 130,height/3+100);
      noLoop();
     
     }
     else if(win==1){
      textSize(120);
-    text("YOU LOSE!",width*3/5,height*3/5);
+    text("YOU LOSE!",width/3 - 130,height*3/5);
      noLoop(); 
     }
   }else if(state == 2){
@@ -383,6 +383,7 @@ void keyPressed(){
   reps = 0;
   win = 0;  
   start=true;
+  loop();
  }
 }
 
