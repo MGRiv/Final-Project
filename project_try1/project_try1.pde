@@ -200,6 +200,8 @@ void draw(){
     text("JUNIOR:180", s3X -(csize / 3) + 17,sY);
     text("SENIOR:225", s4X -(csize / 3) + 14,sY);
     text("SUPER SENIOR:320", s5X -(csize / 3) - 10,sY);
+    text(str(pbase.health),100,625);
+    text(str(ebase.health),960,625);
     if (win==2){
      textSize(120);
      text("YOU WIN!",width/3,height/3+100);
@@ -228,8 +230,6 @@ void draw(){
    text("return to the main menu by pressing m. This will save your progress",0,608);
    text("as long as you keep the window open. Additionally, one can restart",0,672);
    text("by pressing r.",0,736);
-   text(str(pbase.health),100,625);
-   text(str(ebase.health),960,625);
   }
 }
 
