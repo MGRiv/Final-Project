@@ -373,12 +373,11 @@ void keyPressed(){
  if(key=='r'){
   state=0;
  resource = 15;
-  for(int i=aliveCreatures.size()-1;i>=0; i--){
-   aliveCreatures.remove(i);
+  for(int i = 0; i < aliveCreatures.size(); i++){
+   aliveCreatures.remove(0);
   }
   reps = 0;
   win = 0;  
-  start=true;
  }
 }
 
