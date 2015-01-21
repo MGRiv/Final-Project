@@ -228,6 +228,8 @@ void draw(){
    text("return to the main menu by pressing m. This will save your progress",0,608);
    text("as long as you keep the window open. Additionally, one can restart",0,672);
    text("by pressing r.",0,736);
+   text(str(pbase.health),100,625);
+   text(str(ebase.health),960,625);
   }
 }
 
