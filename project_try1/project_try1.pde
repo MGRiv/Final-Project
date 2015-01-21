@@ -18,6 +18,8 @@ float state = 0;
 float resource = 75;
 float spawnTimer=0;
 int win = 0;
+int pHealth=30;
+int eHealth=30;
 boolean looping = true;
 float reps = 0;
 boolean start = true;
@@ -126,8 +128,8 @@ void draw(){
     }
     img = loadImage("southpark.jpg");
     background(img);
-    Base pbase=new Base(-50,650,"MagicSchoolBus.png");
-    Base ebase=new Base(875,600,"Portal.png");
+    Base pbase=new Base(pHealth,0,-50,700,"MagicSchoolBus.png");
+    Base ebase=new Base(eHealth,0,875,650,"Portal.png");
     for (int i=0;i<aliveCreatures.size();i++){
       if(aliveCreatures.get(i).health > 0){
         aliveCreatures.get(i).nowAni.display(aliveCreatures.get(i).x,aliveCreatures.get(i).y);
@@ -138,9 +140,9 @@ void draw(){
         }
         if(abs(aliveCreatures.get(i).x - 540) > 440){
          if(aliveCreatures.get(i).friendly == true){
-          ebase.health -= aliveCreatures.get(i).health; 
+          eHealth -= aliveCreatures.get(i).health; 
          }else{
-          pbase.health -=aliveCreatures.get(i).health; 
+          pHealth -=aliveCreatures.get(i).health; 
          }
          aliveCreatures.remove(i);
         }
